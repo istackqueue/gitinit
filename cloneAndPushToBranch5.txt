@@ -1,0 +1,167 @@
+[Maloy-> gittestrepo]$ git branch -a -v
+  childofbranchfrommaster                975e9fa add childFile.txt + file.txt modified
+  master                                 f32ba4c add file
+* phoneIconBranch                        a46cd58 modified file.txt
+  remotes/origin/HEAD                    -> origin/master
+  remotes/origin/branchfrommaster        473eba9 add bfmFile.txt
+  remotes/origin/childofbranchfrommaster 975e9fa add childFile.txt + file.txt modified
+  remotes/origin/master                  f32ba4c add file
+  remotes/origin/newFeature              2ebb374 add sidewinder
+  remotes/origin/phoneIconBranch         a46cd58 modified file.txt
+[Maloy-> gittestrepo]$ git diff
+[Maloy-> gittestrepo]$ git status -s
+[Maloy-> gittestrepo]$ git push --help
+[Maloy-> gittestrepo]$ git branch -a -v
+  childofbranchfrommaster                975e9fa add childFile.txt + file.txt modified
+  master                                 f32ba4c add file
+* phoneIconBranch                        a46cd58 modified file.txt
+  remotes/origin/HEAD                    -> origin/master
+  remotes/origin/branchfrommaster        473eba9 add bfmFile.txt
+  remotes/origin/childofbranchfrommaster 975e9fa add childFile.txt + file.txt modified
+  remotes/origin/master                  f32ba4c add file
+  remotes/origin/newFeature              2ebb374 add sidewinder
+  remotes/origin/phoneIconBranch         a46cd58 modified file.txt
+[Maloy-> gittestrepo]$ git fetch
+Password for 'https://istackqueue@bitbucket.org':
+From https://bitbucket.org/istackqueue/gittestrepo
+ * [new branch]      withuparam -> origin/withuparam
+[Maloy-> gittestrepo]$ git branch -a -v
+  childofbranchfrommaster                975e9fa add childFile.txt + file.txt modified
+  master                                 f32ba4c add file
+* phoneIconBranch                        a46cd58 modified file.txt
+  remotes/origin/HEAD                    -> origin/master
+  remotes/origin/branchfrommaster        473eba9 add bfmFile.txt
+  remotes/origin/childofbranchfrommaster 975e9fa add childFile.txt + file.txt modified
+  remotes/origin/master                  f32ba4c add file
+  remotes/origin/newFeature              2ebb374 add sidewinder
+  remotes/origin/phoneIconBranch         a46cd58 modified file.txt
+  remotes/origin/withuparam              f32ba4c add file
+  
+  
+  NOTE: ADDED NEW BRANCH CALLED withuparam
+  
+[Maloy-> gittestrepo]$ git checkout withuparam
+Branch 'withuparam' set up to track remote branch 'withuparam' from 'origin'.
+Switched to a new branch 'withuparam'
+[Maloy-> gittestrepo]$ git branch -a -v
+  childofbranchfrommaster                975e9fa add childFile.txt + file.txt modified
+  master                                 f32ba4c add file
+  phoneIconBranch                        a46cd58 modified file.txt
+* withuparam                             f32ba4c add file
+  remotes/origin/HEAD                    -> origin/master
+  remotes/origin/branchfrommaster        473eba9 add bfmFile.txt
+  remotes/origin/childofbranchfrommaster 975e9fa add childFile.txt + file.txt modified
+  remotes/origin/master                  f32ba4c add file
+  remotes/origin/newFeature              2ebb374 add sidewinder
+  remotes/origin/phoneIconBranch         a46cd58 modified file.txt
+  remotes/origin/withuparam              f32ba4c add file
+[Maloy-> gittestrepo]$ git status -s
+[Maloy-> gittestrepo]$ ls
+file.txt
+[Maloy-> gittestrepo]$ cat file.txt
+[Maloy-> gittestrepo]$ vi file.txt
+[Maloy-> gittestrepo]$ cat file.txt
+the cat in a hat came by
+[Maloy-> gittestrepo]$ git status -s
+ M file.txt
+[Maloy-> gittestrepo]$ git diff
+diff --git a/file.txt b/file.txt
+index e69de29..b697251 100644
+--- a/file.txt
++++ b/file.txt
+@@ -0,0 +1 @@
++the cat in a hat came by
+[Maloy-> gittestrepo]$ git branch -a -v
+  childofbranchfrommaster                975e9fa add childFile.txt + file.txt modified
+  master                                 f32ba4c add file
+  phoneIconBranch                        a46cd58 modified file.txt
+* withuparam                             f32ba4c add file
+  remotes/origin/HEAD                    -> origin/master
+  remotes/origin/branchfrommaster        473eba9 add bfmFile.txt
+  remotes/origin/childofbranchfrommaster 975e9fa add childFile.txt + file.txt modified
+  remotes/origin/master                  f32ba4c add file
+  remotes/origin/newFeature              2ebb374 add sidewinder
+  remotes/origin/phoneIconBranch         a46cd58 modified file.txt
+  remotes/origin/withuparam              f32ba4c add file
+[Maloy-> gittestrepo]$ git commit -m 'add text in file.txt'
+On branch withuparam
+Your branch is up to date with 'origin/withuparam'.
+
+Changes not staged for commit:
+        modified:   file.txt
+
+no changes added to commit
+[Maloy-> gittestrepo]$ git status -s
+ M file.txt
+[Maloy-> gittestrepo]$ git add file.txt
+[Maloy-> gittestrepo]$ git status -s
+M  file.txt
+[Maloy-> gittestrepo]$ git branch -a -v
+  childofbranchfrommaster                975e9fa add childFile.txt + file.txt modified
+  master                                 f32ba4c add file
+  phoneIconBranch                        a46cd58 modified file.txt
+* withuparam                             f32ba4c add file
+  remotes/origin/HEAD                    -> origin/master
+  remotes/origin/branchfrommaster        473eba9 add bfmFile.txt
+  remotes/origin/childofbranchfrommaster 975e9fa add childFile.txt + file.txt modified
+  remotes/origin/master                  f32ba4c add file
+  remotes/origin/newFeature              2ebb374 add sidewinder
+  remotes/origin/phoneIconBranch         a46cd58 modified file.txt
+  remotes/origin/withuparam              f32ba4c add file
+[Maloy-> gittestrepo]$ git diff
+[Maloy-> gittestrepo]$ git commit -m 'add text in file.txt'
+[withuparam 10e0128] add text in file.txt
+ 1 file changed, 1 insertion(+)
+[Maloy-> gittestrepo]$ git branch -a -v
+  childofbranchfrommaster                975e9fa add childFile.txt + file.txt modified
+  master                                 f32ba4c add file
+  phoneIconBranch                        a46cd58 modified file.txt
+* withuparam                             10e0128 [ahead 1] add text in file.txt
+  remotes/origin/HEAD                    -> origin/master
+  remotes/origin/branchfrommaster        473eba9 add bfmFile.txt
+  remotes/origin/childofbranchfrommaster 975e9fa add childFile.txt + file.txt modified
+  remotes/origin/master                  f32ba4c add file
+  remotes/origin/newFeature              2ebb374 add sidewinder
+  remotes/origin/phoneIconBranch         a46cd58 modified file.txt
+  remotes/origin/withuparam              f32ba4c add file
+[Maloy-> gittestrepo]$ git remote -v
+origin  https://istackqueue@bitbucket.org/istackqueue/gittestrepo.git (fetch)
+origin  https://istackqueue@bitbucket.org/istackqueue/gittestrepo.git (push)
+[Maloy-> gittestrepo]$ git push -u origin withuparam
+Password for 'https://istackqueue@bitbucket.org':
+Counting objects: 3, done.
+Writing objects: 100% (3/3), 272 bytes | 272.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+remote:
+remote: Create pull request for withuparam:
+remote:   https://bitbucket.org/istackqueue/gittestrepo/pull-requests/new?source=withuparam&t=1
+remote:
+To https://bitbucket.org/istackqueue/gittestrepo.git
+   f32ba4c..10e0128  withuparam -> withuparam
+Branch 'withuparam' set up to track remote branch 'withuparam' from 'origin'.
+[Maloy-> gittestrepo]$ git branch -a -v
+  childofbranchfrommaster                975e9fa add childFile.txt + file.txt modified
+  master                                 f32ba4c add file
+  phoneIconBranch                        a46cd58 modified file.txt
+* withuparam                             10e0128 add text in file.txt
+  remotes/origin/HEAD                    -> origin/master
+  remotes/origin/branchfrommaster        473eba9 add bfmFile.txt
+  remotes/origin/childofbranchfrommaster 975e9fa add childFile.txt + file.txt modified
+  remotes/origin/master                  f32ba4c add file
+  remotes/origin/newFeature              2ebb374 add sidewinder
+  remotes/origin/phoneIconBranch         a46cd58 modified file.txt
+  remotes/origin/withuparam              10e0128 add text in file.txt
+[Maloy-> gittestrepo]$ git diff
+[Maloy-> gittestrepo]$ git log
+commit 10e01284fe44e5e51f580dd1783fd49d0ffc853c (HEAD -> withuparam, origin/withuparam)
+Author: javaeebldr <emailmaloy@gmail.com>
+Date:   Thu Jul 19 14:43:43 2018 -0700
+
+    add text in file.txt
+
+commit f32ba4cf1228fd51d7c91f3b79c9aa224833464d (origin/master, origin/HEAD, master)
+Author: javaeebldr <emailmaloy@gmail.com>
+Date:   Thu Jul 19 04:45:41 2018 -0700
+
+    add file
+[Maloy-> gittestrepo]$
