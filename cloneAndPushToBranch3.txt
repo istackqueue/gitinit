@@ -1,0 +1,103 @@
+[Maloy-> createAFeatureBranch]$ cd ..
+[Maloy-> howTo]$ cd ..
+[Maloy-> git]$ ls
+howTo  repo1  repo2  repo3  repo4  repo5  repo6  repo7
+[Maloy-> git]$ mkdir repo8
+[Maloy-> git]$ cd repo8/
+[Maloy-> repo8]$ ls
+[Maloy-> repo8]$ git clone https://istackqueue@bitbucket.org/istackqueue/gittestrepo.git
+Cloning into 'gittestrepo'...
+Password for 'https://istackqueue@bitbucket.org':
+remote: Counting objects: 13, done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 13 (delta 2), reused 0 (delta 0)
+Unpacking objects: 100% (13/13), done.
+[Maloy-> repo8]$ ls
+gittestrepo
+[Maloy-> repo8]$ cd gittestrepo/
+[Maloy-> gittestrepo]$ ls
+file.txt
+[Maloy-> gittestrepo]$ git branch -a
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/branchfrommaster
+  remotes/origin/childofbranchfrommaster
+  remotes/origin/master
+  remotes/origin/newFeature
+[Maloy-> gittestrepo]$ git fetch
+Password for 'https://istackqueue@bitbucket.org':
+[Maloy-> gittestrepo]$ git branch -a -v
+* master                                 f32ba4c add file
+  remotes/origin/HEAD                    -> origin/master
+  remotes/origin/branchfrommaster        473eba9 add bfmFile.txt
+  remotes/origin/childofbranchfrommaster 473eba9 add bfmFile.txt
+  remotes/origin/master                  f32ba4c add file
+  remotes/origin/newFeature              2ebb374 add sidewinder
+[Maloy-> gittestrepo]$ git checkout childofbranchfrommaster
+Branch 'childofbranchfrommaster' set up to track remote branch 'childofbranchfrommaster' from 'origin'.
+Switched to a new branch 'childofbranchfrommaster'
+[Maloy-> gittestrepo]$ git branch -a -v
+* childofbranchfrommaster                473eba9 add bfmFile.txt
+  master                                 f32ba4c add file
+  remotes/origin/HEAD                    -> origin/master
+  remotes/origin/branchfrommaster        473eba9 add bfmFile.txt
+  remotes/origin/childofbranchfrommaster 473eba9 add bfmFile.txt
+  remotes/origin/master                  f32ba4c add file
+  remotes/origin/newFeature              2ebb374 add sidewinder
+[Maloy-> gittestrepo]$ ls
+bfmFile.txt  file.txt
+[Maloy-> gittestrepo]$ touch childFile.txt
+[Maloy-> gittestrepo]$ vi file.txt
+[Maloy-> gittestrepo]$ ls -lat
+total 9
+drwxrwxr-x+ 1 marlowe None  0 Jul 19 14:13 .
+-rw-rw-r--+ 1 marlowe None 20 Jul 19 14:13 file.txt
+-rw-rw-r--+ 1 marlowe None  0 Jul 19 14:13 childFile.txt
+drwxrwxr-x+ 1 marlowe None  0 Jul 19 14:12 .git
+-rw-rw-r--+ 1 marlowe None  0 Jul 19 14:12 bfmFile.txt
+drwxrwxr-x+ 1 marlowe None  0 Jul 19 14:10 ..
+[Maloy-> gittestrepo]$ git status -s
+ M file.txt
+?? childFile.txt
+[Maloy-> gittestrepo]$ git add file.txt
+[Maloy-> gittestrepo]$ git status -s
+M  file.txt
+?? childFile.txt
+[Maloy-> gittestrepo]$ git add childFile.txt
+[Maloy-> gittestrepo]$ git status -s
+A  childFile.txt
+M  file.txt
+[Maloy-> gittestrepo]$ git branch -a -v
+* childofbranchfrommaster                473eba9 add bfmFile.txt
+  master                                 f32ba4c add file
+  remotes/origin/HEAD                    -> origin/master
+  remotes/origin/branchfrommaster        473eba9 add bfmFile.txt
+  remotes/origin/childofbranchfrommaster 473eba9 add bfmFile.txt
+  remotes/origin/master                  f32ba4c add file
+  remotes/origin/newFeature              2ebb374 add sidewinder
+[Maloy-> gittestrepo]$ git commit -m 'add childFile.txt + file.txt modified'
+[childofbranchfrommaster 975e9fa] add childFile.txt + file.txt modified
+ 2 files changed, 1 insertion(+)
+ create mode 100644 childFile.txt
+[Maloy-> gittestrepo]$ git branch -a -v
+* childofbranchfrommaster                975e9fa [ahead 1] add childFile.txt + file.txt modified
+  master                                 f32ba4c add file
+  remotes/origin/HEAD                    -> origin/master
+  remotes/origin/branchfrommaster        473eba9 add bfmFile.txt
+  remotes/origin/childofbranchfrommaster 473eba9 add bfmFile.txt
+  remotes/origin/master                  f32ba4c add file
+  remotes/origin/newFeature              2ebb374 add sidewinder
+[Maloy-> gittestrepo]$ git push origin childofbranchfrommaster
+Password for 'https://istackqueue@bitbucket.org':
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 312 bytes | 312.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+remote:
+remote: Create pull request for childofbranchfrommaster:
+remote:   https://bitbucket.org/istackqueue/gittestrepo/pull-requests/new?source=childofbranchfrommaster&t=1
+remote:
+To https://bitbucket.org/istackqueue/gittestrepo.git
+   473eba9..975e9fa  childofbranchfrommaster -> childofbranchfrommaster
+[Maloy-> gittestrepo]$

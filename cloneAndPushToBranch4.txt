@@ -1,0 +1,217 @@
+ORIGINAL Repository
+
+[Maloy-> gittestrepo]$ git branch -a
+* childofbranchfrommaster
+  master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/branchfrommaster
+  remotes/origin/childofbranchfrommaster
+  remotes/origin/master
+  remotes/origin/newFeature
+
+
+NOTE: Created a new branch in bitbucket called phoneIconBranch
+ master  change destination
+ phoneIconBranch
+Branch restrictionsNo restrictions edit
+Check out your branch
+This branch does not contain any changes — check it out on your local machine to do some work.
+
+Check out in Sourcetree
+
+You can also use this command to check out your branch:
+
+git fetch && git checkout phoneIconBranch
+
+
+
+[Maloy-> gittestrepo]$ git fetch
+Password for 'https://istackqueue@bitbucket.org':
+From https://bitbucket.org/istackqueue/gittestrepo
+ * [new branch]      phoneIconBranch -> origin/phoneIconBranch
+[Maloy-> gittestrepo]$ git branch -a -v
+* childofbranchfrommaster                975e9fa add childFile.txt + file.txt modified
+  master                                 f32ba4c add file
+  remotes/origin/HEAD                    -> origin/master
+  remotes/origin/branchfrommaster        473eba9 add bfmFile.txt
+  remotes/origin/childofbranchfrommaster 975e9fa add childFile.txt + file.txt modified
+  remotes/origin/master                  f32ba4c add file
+  remotes/origin/newFeature              2ebb374 add sidewinder
+  remotes/origin/phoneIconBranch         f32ba4c add file
+[Maloy-> gittestrepo]$ git checkout phoneIconBranch
+Branch 'phoneIconBranch' set up to track remote branch 'phoneIconBranch' from 'origin'.
+Switched to a new branch 'phoneIconBranch'
+[Maloy-> gittestrepo]$ git branch -a -v
+  childofbranchfrommaster                975e9fa add childFile.txt + file.txt modified
+  master                                 f32ba4c add file
+* phoneIconBranch                        f32ba4c add file
+  remotes/origin/HEAD                    -> origin/master
+  remotes/origin/branchfrommaster        473eba9 add bfmFile.txt
+  remotes/origin/childofbranchfrommaster 975e9fa add childFile.txt + file.txt modified
+  remotes/origin/master                  f32ba4c add file
+  remotes/origin/newFeature              2ebb374 add sidewinder
+  remotes/origin/phoneIconBranch         f32ba4c add file
+[Maloy-> gittestrepo]$ ls -lat
+total 8
+drwxrwxr-x+ 1 marlowe None 0 Jul 19 14:24 .git
+drwxrwxr-x+ 1 marlowe None 0 Jul 19 14:24 .
+-rw-rw-r--+ 1 marlowe None 0 Jul 19 14:24 file.txt
+drwxrwxr-x+ 1 marlowe None 0 Jul 19 14:10 ..
+[Maloy-> gittestrepo]$ vi file.txt
+[Maloy-> gittestrepo]$ cat file.txt
+somewhere over the rainbow
+[Maloy-> gittestrepo]$ git diff
+diff --git a/file.txt b/file.txt
+index e69de29..0588297 100644
+--- a/file.txt
++++ b/file.txt
+@@ -0,0 +1 @@
++somewhere over the rainbow
+[Maloy-> gittestrepo]$ git log
+commit f32ba4cf1228fd51d7c91f3b79c9aa224833464d (HEAD -> phoneIconBranch, origin/phoneIconBranch, origin/master, origin/HEAD, master)
+Author: javaeebldr <emailmaloy@gmail.com>
+Date:   Thu Jul 19 04:45:41 2018 -0700
+
+    add file
+[Maloy-> gittestrepo]$ git status -s
+ M file.txt
+[Maloy-> gittestrepo]$ git add file.txt
+[Maloy-> gittestrepo]$ git status -s
+M  file.txt
+[Maloy-> gittestrepo]$ git branch -a -v
+  childofbranchfrommaster                975e9fa add childFile.txt + file.txt modified
+  master                                 f32ba4c add file
+* phoneIconBranch                        f32ba4c add file
+  remotes/origin/HEAD                    -> origin/master
+  remotes/origin/branchfrommaster        473eba9 add bfmFile.txt
+  remotes/origin/childofbranchfrommaster 975e9fa add childFile.txt + file.txt modified
+  remotes/origin/master                  f32ba4c add file
+  remotes/origin/newFeature              2ebb374 add sidewinder
+  remotes/origin/phoneIconBranch         f32ba4c add file
+[Maloy-> gittestrepo]$ git commit -m 'modified file.txt'
+[phoneIconBranch a46cd58] modified file.txt
+ 1 file changed, 1 insertion(+)
+[Maloy-> gittestrepo]$ git branch -a -v
+  childofbranchfrommaster                975e9fa add childFile.txt + file.txt modified
+  master                                 f32ba4c add file
+* phoneIconBranch                        a46cd58 [ahead 1] modified file.txt
+  remotes/origin/HEAD                    -> origin/master
+  remotes/origin/branchfrommaster        473eba9 add bfmFile.txt
+  remotes/origin/childofbranchfrommaster 975e9fa add childFile.txt + file.txt modified
+  remotes/origin/master                  f32ba4c add file
+  remotes/origin/newFeature              2ebb374 add sidewinder
+  remotes/origin/phoneIconBranch         f32ba4c add file
+[Maloy-> gittestrepo]$ git log
+commit a46cd58b797287c9fad3071acaad73356b4b2914 (HEAD -> phoneIconBranch)
+Author: javaeebldr <emailmaloy@gmail.com>
+Date:   Thu Jul 19 14:27:42 2018 -0700
+
+    modified file.txt
+
+commit f32ba4cf1228fd51d7c91f3b79c9aa224833464d (origin/phoneIconBranch, origin/master, origin/HEAD, master)
+Author: javaeebldr <emailmaloy@gmail.com>
+Date:   Thu Jul 19 04:45:41 2018 -0700
+
+    add file
+[Maloy-> gittestrepo]$ git push origin phoneIconBranch
+Password for 'https://istackqueue@bitbucket.org':
+Counting objects: 3, done.
+Writing objects: 100% (3/3), 271 bytes | 271.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+remote:
+remote: Create pull request for phoneIconBranch:
+remote:   https://bitbucket.org/istackqueue/gittestrepo/pull-requests/new?source=phoneIconBranch&t=1
+remote:
+To https://bitbucket.org/istackqueue/gittestrepo.git
+   f32ba4c..a46cd58  phoneIconBranch -> phoneIconBranch
+[Maloy-> gittestrepo]$ git log
+commit a46cd58b797287c9fad3071acaad73356b4b2914 (HEAD -> phoneIconBranch, origin/phoneIconBranch)
+Author: javaeebldr <emailmaloy@gmail.com>
+Date:   Thu Jul 19 14:27:42 2018 -0700
+
+    modified file.txt
+
+commit f32ba4cf1228fd51d7c91f3b79c9aa224833464d (origin/master, origin/HEAD, master)
+Author: javaeebldr <emailmaloy@gmail.com>
+Date:   Thu Jul 19 04:45:41 2018 -0700
+
+    add file
+[Maloy-> gittestrepo]$ git branch -a -v
+  childofbranchfrommaster                975e9fa add childFile.txt + file.txt modified
+  master                                 f32ba4c add file
+* phoneIconBranch                        a46cd58 modified file.txt
+  remotes/origin/HEAD                    -> origin/master
+  remotes/origin/branchfrommaster        473eba9 add bfmFile.txt
+  remotes/origin/childofbranchfrommaster 975e9fa add childFile.txt + file.txt modified
+  remotes/origin/master                  f32ba4c add file
+  remotes/origin/newFeature              2ebb374 add sidewinder
+  remotes/origin/phoneIconBranch         a46cd58 modified file.txt
+[Maloy-> gittestrepo]$ git diff
+[Maloy-> gittestrepo]$ git status -s
+[Maloy-> gittestrepo]$
+
+
+
+
+
+
+gittestrepo
+Source
+Commits
+Branches
+Pull requests
+Pipelines
+Downloads
+Boards
+Boards
+Settings
+
+istackqueue  gittestrepo  Pull requests
+Create a pull request
+ Repository
+istackqueue / gittestrepo
+Created 10 hours ago, updated 2 minutes ago
+
+Branch
+
+
+ Repository
+
+
+Branch
+
+
+Titlerequired 
+modified file.txt
+Description
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Feedback
+
+
+
+Reviewers
+
+Start typing to search for a user
+Close branch
+Close phoneIconBranch after the pull request is merged
+Create pull request
+Diff
+Commits
+Author	Commit	Message	Date	Builds
+  javaeebldr
+a46cd58
+modified file.txt
+3 minutes ago
