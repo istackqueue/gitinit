@@ -1,0 +1,76 @@
+[Maloy-> repo7]$ git clone https://istackqueue@bitbucket.org/istackqueue/gittestrepo.git
+Cloning into 'gittestrepo'...
+Password for 'https://istackqueue@bitbucket.org':
+remote: Counting objects: 11, done.
+remote: Compressing objects: 100% (8/8), done.
+remote: Total 11 (delta 2), reused 0 (delta 0)
+Unpacking objects: 100% (11/11), done.
+[Maloy-> repo7]$ git status -s
+fatal: Not a git repository (or any parent up to mount point /cygdrive)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+[Maloy-> repo7]$ ls
+gittestrepo
+[Maloy-> repo7]$ cd gittestrepo/
+[Maloy-> gittestrepo]$ git remote -v
+origin  https://istackqueue@bitbucket.org/istackqueue/gittestrepo.git (fetch)
+origin  https://istackqueue@bitbucket.org/istackqueue/gittestrepo.git (push)
+[Maloy-> gittestrepo]$ git branch -a
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/branchfrommaster
+  remotes/origin/master
+  remotes/origin/newFeature
+[Maloy-> gittestrepo]$ git fetch
+Password for 'https://istackqueue@bitbucket.org':
+[Maloy-> gittestrepo]$ git status -s
+[Maloy-> gittestrepo]$ git checkout branchfrommaster
+Branch 'branchfrommaster' set up to track remote branch 'branchfrommaster' from 'origin'.
+Switched to a new branch 'branchfrommaster'
+[Maloy-> gittestrepo]$ git status -s
+[Maloy-> gittestrepo]$ git status -s
+[Maloy-> gittestrepo]$ git branch -a -v
+* branchfrommaster                f32ba4c add file
+  master                          f32ba4c add file
+  remotes/origin/HEAD             -> origin/master
+  remotes/origin/branchfrommaster f32ba4c add file
+  remotes/origin/master           f32ba4c add file
+  remotes/origin/newFeature       2ebb374 add sidewinder
+[Maloy-> gittestrepo]$ ls
+file.txt
+[Maloy-> gittestrepo]$ touch bfmFile.txt
+[Maloy-> gittestrepo]$ git status -s
+?? bfmFile.txt
+[Maloy-> gittestrepo]$ git add bfmFile.txt
+[Maloy-> gittestrepo]$ git status -s
+A  bfmFile.txt
+[Maloy-> gittestrepo]$ git commit -m 'add bfmFile.txt'
+[branchfrommaster 473eba9] add bfmFile.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 bfmFile.txt
+[Maloy-> gittestrepo]$ git status -s
+[Maloy-> gittestrepo]$ git branch -a -v
+* branchfrommaster                473eba9 [ahead 1] add bfmFile.txt
+  master                          f32ba4c add file
+  remotes/origin/HEAD             -> origin/master
+  remotes/origin/branchfrommaster f32ba4c add file
+  remotes/origin/master           f32ba4c add file
+  remotes/origin/newFeature       2ebb374 add sidewinder
+[Maloy-> gittestrepo]$ git push origin branchfrommaster
+Password for 'https://istackqueue@bitbucket.org':
+Counting objects: 2, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 243 bytes | 243.00 KiB/s, done.
+Total 2 (delta 0), reused 0 (delta 0)
+remote:
+remote: Create pull request for branchfrommaster:
+remote:   https://bitbucket.org/istackqueue/gittestrepo/pull-requests/new?source=branchfrommaster&t=1
+remote:
+To https://bitbucket.org/istackqueue/gittestrepo.git
+   f32ba4c..473eba9  branchfrommaster -> branchfrommaster
+   
+Diff
+Commits
+Merged pull requests
+Files changed (1)
++0 -0 A bfmFile.txt

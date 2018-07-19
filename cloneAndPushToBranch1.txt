@@ -1,0 +1,109 @@
+[Maloy-> repo6]$ ls
+[Maloy-> repo6]$ git clone https://istackqueue@bitbucket.org/istackqueue/gittestrepo.git
+Cloning into 'gittestrepo'...
+Password for 'https://istackqueue@bitbucket.org':
+remote: Counting objects: 9, done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 9 (delta 1), reused 0 (delta 0)
+Unpacking objects: 100% (9/9), done.
+[Maloy-> repo6]$ cd gittestrepo/
+[Maloy-> gittestrepo]$ ls
+file.txt
+[Maloy-> gittestrepo]$ git branch -a
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/newFeature
+[Maloy-> gittestrepo]$ git checkout --track origin/newFeature
+Branch 'newFeature' set up to track remote branch 'newFeature' from 'origin'.
+Switched to a new branch 'newFeature'
+[Maloy-> gittestrepo]$ git branch -a -v
+  master                    f32ba4c add file
+* newFeature                4bbc482 add hushnow
+  remotes/origin/HEAD       -> origin/master
+  remotes/origin/master     f32ba4c add file
+  remotes/origin/newFeature 4bbc482 add hushnow
+[Maloy-> gittestrepo]$ git log
+commit 4bbc48232c2d0db7f9afbb76f266de8e7049e3f4 (HEAD -> newFeature, origin/newFeature)
+Author: javaeebldr <emailmaloy@gmail.com>
+Date:   Thu Jul 19 05:35:42 2018 -0700
+
+    add hushnow
+
+commit 76e50d41f26cd2e550ac4e2d3cdc44e3e14fc48a
+Author: javaeebldr <emailmaloy@gmail.com>
+Date:   Thu Jul 19 05:07:42 2018 -0700
+
+    adding a change from feature branch
+
+commit 00bc56c359c8ed482f36be4c95832067be7e29c4
+Author: javaeebldr <emailmaloy@gmail.com>
+Date:   Thu Jul 19 04:49:30 2018 -0700
+
+    add fileAAA
+[Maloy-> gittestrepo]$ ls
+fileAAA.txt  hushNow.txt  newFeatureBranchFile.txt
+[Maloy-> gittestrepo]$ pwd
+/cygdrive/c/javadev/git/repo6/gittestrepo
+[Maloy-> gittestrepo]$ touch sidewinder.txt
+[Maloy-> gittestrepo]$ ls
+fileAAA.txt  hushNow.txt  newFeatureBranchFile.txt  sidewinder.txt
+[Maloy-> gittestrepo]$ git status -s
+?? sidewinder.txt
+[Maloy-> gittestrepo]$ git add sidewinder.txt
+[Maloy-> gittestrepo]$ git status -s
+A  sidewinder.txt
+[Maloy-> gittestrepo]$ git branch -a -v
+  master                    f32ba4c add file
+* newFeature                4bbc482 add hushnow
+  remotes/origin/HEAD       -> origin/master
+  remotes/origin/master     f32ba4c add file
+  remotes/origin/newFeature 4bbc482 add hushnow
+[Maloy-> gittestrepo]$ git commit -m 'add sidewinder'
+[newFeature 2ebb374] add sidewinder
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 sidewinder.txt
+[Maloy-> gittestrepo]$ git branch -a -v
+  master                    f32ba4c add file
+* newFeature                2ebb374 [ahead 1] add sidewinder
+  remotes/origin/HEAD       -> origin/master
+  remotes/origin/master     f32ba4c add file
+  remotes/origin/newFeature 4bbc482 add hushnow
+[Maloy-> gittestrepo]$ git push origin newFeature
+Password for 'https://istackqueue@bitbucket.org':
+Counting objects: 2, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 239 bytes | 239.00 KiB/s, done.
+Total 2 (delta 1), reused 0 (delta 0)
+remote:
+remote: Create pull request for newFeature:
+remote:   https://bitbucket.org/istackqueue/gittestrepo/pull-requests/new?source=newFeature&t=1
+remote:
+To https://bitbucket.org/istackqueue/gittestrepo.git
+   4bbc482..2ebb374  newFeature -> newFeature
+[Maloy-> gittestrepo]$ git remote -v
+origin  https://istackqueue@bitbucket.org/istackqueue/gittestrepo.git (fetch)
+origin  https://istackqueue@bitbucket.org/istackqueue/gittestrepo.git (push)
+[Maloy-> gittestrepo]$
+
+
+Author	Commit	Message	Date	Builds
+1 commit behind master. Sync now.
+  javaeebldr
+2ebb374
+add sidewinder
+23 minutes ago
+  javaeebldr
+4bbc482
+add hushnow
+39 minutes ago
+  javaeebldr
+76e50d4
+adding a change from feature branch
+an hour ago
+  javaeebldr
+00bc56c
+add fileAAA
+an hour ago
+

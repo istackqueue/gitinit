@@ -1,0 +1,3 @@
+https://www.git-tower.com/learn/git/faq
+
+http://reinh.com/blog/2008/04/18/git-push-just-the-tip.html

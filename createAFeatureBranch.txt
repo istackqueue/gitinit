@@ -1,0 +1,79 @@
+https://confluence.atlassian.com/bitbucket/branching-a-repository-223217999.html
+
+[Maloy-> repo4]$ ls
+fileAAA.txt
+[Maloy-> repo4]$ git branch -a
+* master
+  remotes/origin/master
+[Maloy-> repo4]$ git branch newFeature
+[Maloy-> repo4]$ git branch -a
+* master
+  newFeature
+  remotes/origin/master
+[Maloy-> repo4]$ git checkout newFeature
+Switched to branch 'newFeature'
+[Maloy-> repo4]$ git status -s
+[Maloy-> repo4]$ git branch -a -v
+  master                00bc56c add fileAAA
+* newFeature            00bc56c add fileAAA
+  remotes/origin/master f32ba4c add file
+[Maloy-> repo4]$ ls
+fileAAA.txt
+[Maloy-> repo4]$ touch newFeatureBranchFile.txt
+[Maloy-> repo4]$ git status -s
+?? newFeatureBranchFile.txt
+[Maloy-> repo4]$ git add .
+[Maloy-> repo4]$ git status -s
+A  newFeatureBranchFile.txt
+[Maloy-> repo4]$ git commit -m 'adding a change from feature branch'
+[newFeature 76e50d4] adding a change from feature branch
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 newFeatureBranchFile.txt
+[Maloy-> repo4]$ git status -s
+[Maloy-> repo4]$ git checkout master
+Switched to branch 'master'
+[Maloy-> repo4]$ git branch -a
+* master
+  newFeature
+  remotes/origin/master
+[Maloy-> repo4]$ git push origin newFeature
+Password for 'https://istackqueue@bitbucket.org':
+Counting objects: 5, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (5/5), 454 bytes | 454.00 KiB/s, done.
+Total 5 (delta 0), reused 0 (delta 0)
+remote:
+remote: Create pull request for newFeature:
+remote:   https://bitbucket.org/istackqueue/gittestrepo/pull-requests/new?source=newFeature&t=1
+remote:
+To https://bitbucket.org/istackqueue/gittestrepo.git
+ * [new branch]      newFeature -> newFeature
+[Maloy-> repo4]$ git remote -v
+origin  https://istackqueue@bitbucket.org/istackqueue/gittestrepo.git (fetch)
+origin  https://istackqueue@bitbucket.org/istackqueue/gittestrepo.git (push)
+[Maloy-> repo4]$
+[Maloy-> repo4]$
+[Maloy-> repo4]$ ls
+fileAAA.txt
+[Maloy-> repo4]$ git branch -a
+* master
+  newFeature
+  remotes/origin/master
+  remotes/origin/newFeature
+[Maloy-> repo4]$ git checkout newFeature
+Switched to branch 'newFeature'
+[Maloy-> repo4]$ ls
+fileAAA.txt  newFeatureBranchFile.txt
+[Maloy-> repo4]$ cd ..
+
+in the repository
+
+fileAAA.txt		
+45 minutes ago
+add fileAAA
+newFeatureBranchFile.txt		
+27 minutes ago
+adding a change from feature branch
+
+

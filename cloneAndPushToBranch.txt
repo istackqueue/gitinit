@@ -1,0 +1,92 @@
+[Maloy-> repo5]$ git clone https://istackqueue@bitbucket.org/istackqueue/gittestrepo.git
+Cloning into 'gittestrepo'...
+Password for 'https://istackqueue@bitbucket.org':
+remote: Counting objects: 7, done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 7 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (7/7), done.
+[Maloy-> repo5]$ git status -s
+fatal: Not a git repository (or any parent up to mount point /cygdrive)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+[Maloy-> repo5]$ ls
+gittestrepo
+[Maloy-> repo5]$ cd gittestrepo/
+[Maloy-> gittestrepo]$ ls
+file.txt
+[Maloy-> gittestrepo]$ git branch -a
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/newFeature
+  
+READ THIS: https://www.git-tower.com/learn/git/faq/checkout-remote-branch
+
+  
+[Maloy-> gittestrepo]$ git checkout --track origin/newFeature
+Branch 'newFeature' set up to track remote branch 'newFeature' from 'origin'.
+Switched to a new branch 'newFeature'
+[Maloy-> gittestrepo]$ git status -s
+[Maloy-> gittestrepo]$ ls
+fileAAA.txt  newFeatureBranchFile.txt
+[Maloy-> gittestrepo]$ git branch -a
+  master
+* newFeature
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/newFeature
+[Maloy-> gittestrepo]$ ls
+fileAAA.txt  newFeatureBranchFile.txt
+[Maloy-> gittestrepo]$ ls
+fileAAA.txt  newFeatureBranchFile.txt
+[Maloy-> gittestrepo]$ pwd
+/cygdrive/c/javadev/git/repo5/gittestrepo
+[Maloy-> gittestrepo]$ touch hushNow.txt
+[Maloy-> gittestrepo]$ ls
+fileAAA.txt  hushNow.txt  newFeatureBranchFile.txt
+[Maloy-> gittestrepo]$ git status -s
+?? hushNow.txt
+[Maloy-> gittestrepo]$ ls
+fileAAA.txt  hushNow.txt  newFeatureBranchFile.txt
+[Maloy-> gittestrepo]$ git add hushNow.txt
+[Maloy-> gittestrepo]$ git status -s
+A  hushNow.txt
+[Maloy-> gittestrepo]$ git commit -m 'add hushnow'
+[newFeature 4bbc482] add hushnow
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 hushNow.txt
+[Maloy-> gittestrepo]$ git status -s
+[Maloy-> gittestrepo]$ git branch -a
+  master
+* newFeature
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/newFeature
+[Maloy-> gittestrepo]$ git branch -a -v
+  master                    f32ba4c add file
+* newFeature                4bbc482 [ahead 1] add hushnow
+  remotes/origin/HEAD       -> origin/master
+  remotes/origin/master     f32ba4c add file
+  remotes/origin/newFeature 76e50d4 adding a change from feature branch
+[Maloy-> gittestrepo]$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+[Maloy-> gittestrepo]$ git branch -a
+* master
+  newFeature
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+  remotes/origin/newFeature
+[Maloy-> gittestrepo]$ git push origin newFeature
+Password for 'https://istackqueue@bitbucket.org':
+Counting objects: 2, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 230 bytes | 230.00 KiB/s, done.
+Total 2 (delta 1), reused 0 (delta 0)
+remote:
+remote: Create pull request for newFeature:
+remote:   https://bitbucket.org/istackqueue/gittestrepo/pull-requests/new?source=newFeature&t=1
+remote:
+To https://bitbucket.org/istackqueue/gittestrepo.git
+   76e50d4..4bbc482  newFeature -> newFeature
+[Maloy-> gittestrepo]$
